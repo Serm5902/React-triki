@@ -21,6 +21,6 @@ export function WinnerModal({ winner, resetGame }) {
 }
 
 WinnerModal.propTypes = {
-  winner: PropTypes.isRequired,
-  resetGame: PropTypes.isRequired,
+  winner: PropTypes.oneOfType([PropTypes.string, PropTypes.bool]),
+  resetGame: PropTypes.func,
 };
