@@ -3,7 +3,7 @@ import { useState } from "react";
 // Otros imports
 import confetti from "canvas-confetti";
 import { checkWinnerFrom, checkEndGame } from "../logic/board";
-import { TURNS } from "../constants";
+import { TURNS } from "../logic/constants";
 
 export function GameLogic() {
   const [board, setBoard] = useState(Array(9).fill(null));

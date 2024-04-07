@@ -1,5 +1,5 @@
 import { Square } from "./components/Square";
-import { TURNS } from "./constants";
+import { TURNS } from "./logic/constants";
 import { WinnerModal } from "./components/WinnerModal";
 import { GameLogic } from "./components/GameLogic";
 
