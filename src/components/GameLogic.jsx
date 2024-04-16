@@ -4,10 +4,20 @@ import { useState } from "react";
 import confetti from "canvas-confetti";
 import { checkWinnerFrom, checkEndGame } from "../logic/board";
 import { TURNS } from "../logic/constants";
+import { saveGameStorage, resetGameStorage } from "../logic/storage/storage";
 
 export function GameLogic() {
-  const [board, setBoard] = useState(Array(9).fill(null));
-  const [turn, setTurn] = useState(TURNS.X);
+  const [board, setBoard] = useState(() => {
+    const boardFromStorage = window.localStorage.getItem("board");
+    return boardFromStorage
+      ? JSON.parse(boardFromStorage)
+      : Array(9).fill(null);
+  });
+
+  const [turn, setTurn] = useState(() => {
+    const turnFromStorage = window.localStorage.getItem("turn");
+    return turnFromStorage ?? TURNS.X;
+  });
   // null es que no hay ganador, false es que hay un empate
   const [winner, setWinner] = useState(null);
 
@@ -16,6 +26,9 @@ export function GameLogic() {
     setBoard(Array(9).fill(null));
     setTurn(TURNS.X);
     setWinner(null);
+
+    // Quitando el localStorage para cuando hacemos reset del juego
+    resetGameStorage();
   };
 
   // Con esto actualizamos el tablero
@@ -33,6 +46,9 @@ export function GameLogic() {
     // cambiar el turno
     const newTurn = turn === TURNS.X ? TURNS.O : TURNS.X;
     setTurn(newTurn);
+
+    // Guardar el estado del juego
+    saveGameStorage({ board: newBoard, turn: newTurn });
 
     // revisar si hay un ganador
     const newWinner = checkWinnerFrom(newBoard);
