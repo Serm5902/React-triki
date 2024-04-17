@@ -1,7 +1,7 @@
-import { Square } from "./components/Square";
-import { TURNS } from "./logic/constants";
-import { WinnerModal } from "./components/WinnerModal";
-import { GameLogic } from "./components/GameLogic";
+import { Square } from './components/Square';
+import { TURNS } from './logic/constants';
+import { WinnerModal } from './components/WinnerModal';
+import { GameLogic } from './components/GameLogic';
 
 function App() {
   const { board, turn, winner, resetGame, updateBoard } = GameLogic();

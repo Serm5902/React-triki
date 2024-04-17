@@ -1,21 +1,21 @@
 //Hooks
-import { useState } from "react";
+import { useState } from 'react';
 // Otros imports
-import confetti from "canvas-confetti";
-import { checkWinnerFrom, checkEndGame } from "../logic/board";
-import { TURNS } from "../logic/constants";
-import { saveGameStorage, resetGameStorage } from "../logic/storage/storage";
+import confetti from 'canvas-confetti';
+import { checkWinnerFrom, checkEndGame } from '../logic/board';
+import { TURNS } from '../logic/constants';
+import { saveGameStorage, resetGameStorage } from '../logic/storage/storage';
 
 export function GameLogic() {
   const [board, setBoard] = useState(() => {
-    const boardFromStorage = window.localStorage.getItem("board");
+    const boardFromStorage = window.localStorage.getItem('board');
     return boardFromStorage
       ? JSON.parse(boardFromStorage)
       : Array(9).fill(null);
   });
 
   const [turn, setTurn] = useState(() => {
-    const turnFromStorage = window.localStorage.getItem("turn");
+    const turnFromStorage = window.localStorage.getItem('turn');
     return turnFromStorage ?? TURNS.X;
   });
   // null es que no hay ganador, false es que hay un empate

@@ -18,6 +18,9 @@ module.exports = {
       'warn',
       { allowConstantExport: true },
     ],
-    'prettier/prettier': 'warn',
+    'prettier/prettier': [
+      'warn',
+      { trailingComma: 'es5', singleQuote: true, jsxSingleQuote: false },
+    ],
   },
 };
